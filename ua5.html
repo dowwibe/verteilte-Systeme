@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayFinder - Unterkunft erfassen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header> <!-- Code für die obere Leiste auf der Website mit Unternehmenslodo, Benutzernamenanzeige -->
+    <a href="#" class="logo">StayFinder</a>
+    <div class="user-profile">
+        <div class="user-avatar">MJ</div>
+        <span class="user-name">Max Mustermann</span>
+    </div>
+</header>
+
+
+<div class="container"> <!--Zentriert die folgenden zwei "Texte" -->
+    <h1>Unterkunft erfassen</h1>
+    <p class="subtitle">Fügen Sie Ihre Unterkunft hinzu und erreichen Sie Millionen von Reisenden</p>
+
+    <form id="accommodationForm"> <!-- Aufbau des Formulars-->
+        <div class="form-section">
+            <h2>Allgemeine Informationen</h2>
+
+            <div class="form-group">
+                <label for="name" class="required">Name der Unterkunft</label>
+                <input type="text" id="name" name="name" placeholder="z.B. Schönes Apartment in Berlin-Mitte" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type" class="required">Art der Unterkunft</label>
+                <select id="type" name="type" required>
+                    <option value="">Bitte wählen</option>
+                    <option value="hotel">Hotel</option>
+                    <option value="apartment">Ferienwohnung</option>
+                    <option value="hostel">Hostel</option>
+                    <option value="guesthouse">Pension</option>
+                    <option value="villa">Villa</option>
+                    <option value="other">Andere</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Beschreibung</label>
+                <textarea id="description" name="description" rows="4" placeholder="Beschreiben Sie Ihre Unterkunft..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Adresse</h2>
+
+            <div class="form-group">
+                <label for="street" class="required">Straße und Hausnummer</label>
+                <input type="text" id="street" name="street" placeholder="Musterstraße 123" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="zipcode" class="required">Postleitzahl</label>
+                    <input type="text" id="zipcode" name="zipcode" maxlength="5" placeholder="10115" required>
+                    <div class="loading" id="zipcodeLoading">Suche Stadt...</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city" class="required">Stadt</label>
+                    <input type="text" id="city" name="city" placeholder="Berlin" required readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country" class="required">Land</label>
+                <select id="country" name="country" required>
+                    <option value="deutschland">Deutschland</option>
+                    <option value="oesterreich">Österreich</option>
+                    <option value="schweiz">Schweiz</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Ausstattung</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="rooms" class="required">Anzahl Zimmer</label>
+                    <input type="number" id="rooms" name="rooms" min="1" placeholder="3" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bathrooms" class="required">Anzahl Badezimmer</label>
+                    <input type="number" id="bathrooms" name="bathrooms" min="1" placeholder="2" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="maxGuests" class="required">Maximale Gästezahl</label>
+                    <input type="number" id="maxGuests" name="maxGuests" min="1" placeholder="6" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="size">Größe (m²)</label>
+                    <input type="number" id="size" name="size" min="1" placeholder="85">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Kontaktdaten</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contactName" class="required">Kontaktperson</label>
+                    <input type="text" id="contactName" name="contactName" placeholder="Max Mustermann" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail" class="required">E-Mail</label>
+                    <input type="email" id="contactEmail" name="contactEmail" placeholder="max@example.com" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contactPhone" class="required">Telefon</label>
+                    <input type="tel" id="contactPhone" name="contactPhone" placeholder="+49 123 456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactWebsite">Website</label>
+                    <input type="url" id="contactWebsite" name="contactWebsite" placeholder="https://www.example.com">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Bilder<label for="Bild auswählen" class="required"></h2>
+
+            <div class="image-upload-container" id="uploadContainer">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <p class="upload-text">Ziehen Sie Bilder hierher oder klicken Sie, um sie auszuwählen</p>
+                <button type="button" class="upload-btn" id="uploadButton">Bilder auswählen</button>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*" required>
+                <!-- Upload mehrerer Bilder möglich-->
+            </div>
+            <div class="image-preview" id="imagePreview"></div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Unterkunft speichern</button>
+        </div>
+    </form>
+</div>
+
+<!-- Unterkunfts Vorschau -->
+<div class="modal" id="previewModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Unterkunft erfolgreich erstellt</h2>
+            <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="accommodation-details" id="accommodationDetails">
+                <!-- Hier werden die Details aus der script.js Datei dynamisch eingefügt -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" id="editBtn">Bearbeiten</button>
+            <button id="confirmBtn">Bestätigen</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
