@@ -64,10 +64,13 @@
                     <div class="loading" id="zipcodeLoading">Suche Stadt...</div>
                 </div>
 
+
                 <div class="form-group">
                     <label for="city" class="required">Stadt</label>
-                    <input type="text" id="city" name="city" placeholder="Berlin" required readonly>
+                    <input type="text" id="city" name="city" placeholder="Berlin" required>
+                    <div class="loading" id="cityLoading">Suche Postleitzahl...</div>
                 </div>
+
             </div>
 
             <div class="form-group">
@@ -137,7 +140,9 @@
         </div>
 
         <div class="form-section">
-            <h2>Bilder<label for="Bild auswählen" class="required"></h2>
+            <h2>Bilder
+                <label for="Bild auswählen" class="required"></h2>
+            <h3>Nur das Dateiformat .jpg ist erlaubt</h3>
 
             <div class="image-upload-container" id="uploadContainer">
                 <div class="upload-icon">
@@ -176,6 +181,6 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="vs.js"></script>
 </body>
 </html>
